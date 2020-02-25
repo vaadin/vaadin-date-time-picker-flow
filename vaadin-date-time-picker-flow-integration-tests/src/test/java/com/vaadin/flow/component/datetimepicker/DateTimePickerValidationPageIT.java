@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2017 Vaadin Ltd.
+ * Copyright 2000-2020 Vaadin Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -33,7 +33,7 @@ public class DateTimePickerValidationPageIT extends AbstractValidationTest {
 
     @Test
     public void assertInvalidAfterClientChangeMax() {
-        // max is 17:00
+        // max is 2020-06-07T03:00
         final LocalDateTime invalidTime = LocalDateTime.of(2020, 6, 8, 3, 0);
         final LocalDateTime validTime = LocalDateTime.of(2020, 6, 7, 2, 0);;
         assertInvalidAfterClientChange("max", invalidTime, validTime);
@@ -41,7 +41,7 @@ public class DateTimePickerValidationPageIT extends AbstractValidationTest {
 
     @Test
     public void assertInvalidAfterClientChangeMin() {
-        // min is 9:30
+        // min is 2020-06-07T01:00
         final LocalDateTime invalidTime = LocalDateTime.of(2020, 6, 7, 0, 30);
         final LocalDateTime validTime = LocalDateTime.of(2020, 6, 7, 1, 0);
         assertInvalidAfterClientChange("min", invalidTime, validTime);

@@ -603,7 +603,7 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
     }
 
     /**
-     * Sets whether the time picker is marked as input required.
+     * Sets whether the date time picker is marked as input required.
      *
      * @param required
      *        the value of the required to be set
@@ -620,7 +620,7 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
     }
 
     /**
-     * Gets whether the time picker is marked as input required.
+     * Gets whether the date time picker is marked as input required.
      * <p>
      * This property is not synchronized automatically from the client side, so
      * the returned value may not be the same as in client side.
