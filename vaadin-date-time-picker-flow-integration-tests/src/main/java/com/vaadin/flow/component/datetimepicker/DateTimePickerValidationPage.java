@@ -83,11 +83,9 @@ public class DateTimePickerValidationPage extends Div {
     private void createPickerWithMaxAndMinValues() {
         final DateTimePicker dateTimePicker = new DateTimePicker();
         dateTimePicker.setMin(
-                LocalDateTime.of(LocalDate.of(2020, 6, 6),
-                        LocalTime.of(12, 12)));
+                LocalDateTime.of(2020, 6, 7, 1, 0));
         dateTimePicker.setMax(
-                LocalDateTime.of(LocalDate.of(2020, 7, 6),
-                        LocalTime.of(14, 14)));
+                LocalDateTime.of(2020, 6, 7, 3, 0));
         dateTimePicker.setId("picker-with-valid-range");
 
         final Div isValid = new Div();
