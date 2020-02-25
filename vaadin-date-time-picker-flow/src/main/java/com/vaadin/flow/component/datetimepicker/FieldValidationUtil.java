@@ -20,7 +20,7 @@ import com.vaadin.flow.component.HasValidation;
 import com.vaadin.flow.component.page.PendingJavaScriptResult;
 
 /**
- * Utility class for date-time-picker component to disable client
+ * Utility class for date time picker component to disable client
  * side validation.
  *
  * @author Vaadin Ltd

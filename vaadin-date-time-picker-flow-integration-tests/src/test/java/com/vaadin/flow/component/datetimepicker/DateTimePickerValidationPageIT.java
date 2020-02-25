@@ -16,7 +16,6 @@
 package com.vaadin.flow.component.datetimepicker;
 
 import com.vaadin.flow.component.datetimepicker.testbench.DateTimePickerElement;
-import com.vaadin.flow.component.timepicker.TimePicker;
 import com.vaadin.flow.testutil.AbstractValidationTest;
 import com.vaadin.flow.testutil.TestPath;
 import org.junit.Assert;
@@ -26,7 +25,7 @@ import org.openqa.selenium.WebElement;
 import java.time.LocalDateTime;
 
 /**
- * Integration tests for {@link TimePicker} validation.
+ * Integration tests for {@link DateTimePicker} validation.
  */
 @TestPath("date-time-picker-validation")
 public class DateTimePickerValidationPageIT extends AbstractValidationTest {
@@ -34,17 +33,17 @@ public class DateTimePickerValidationPageIT extends AbstractValidationTest {
     @Test
     public void assertInvalidAfterClientChangeMax() {
         // max is 2020-06-07T03:00
-        final LocalDateTime invalidTime = LocalDateTime.of(2020, 6, 8, 3, 0);
-        final LocalDateTime validTime = LocalDateTime.of(2020, 6, 7, 2, 0);;
-        assertInvalidAfterClientChange("max", invalidTime, validTime);
+        final LocalDateTime invalidDateTime = LocalDateTime.of(2020, 6, 8, 3, 0);
+        final LocalDateTime validDateTime = LocalDateTime.of(2020, 6, 7, 2, 0);;
+        assertInvalidAfterClientChange("max", invalidDateTime, validDateTime);
     }
 
     @Test
     public void assertInvalidAfterClientChangeMin() {
         // min is 2020-06-07T01:00
-        final LocalDateTime invalidTime = LocalDateTime.of(2020, 6, 7, 0, 30);
-        final LocalDateTime validTime = LocalDateTime.of(2020, 6, 7, 1, 0);
-        assertInvalidAfterClientChange("min", invalidTime, validTime);
+        final LocalDateTime invalidDateTime = LocalDateTime.of(2020, 6, 7, 0, 30);
+        final LocalDateTime validDateTime = LocalDateTime.of(2020, 6, 7, 1, 0);
+        assertInvalidAfterClientChange("min", invalidDateTime, validDateTime);
     }
 
     private void assertInvalidAfterClientChange(String clientPropertyUnderTest,

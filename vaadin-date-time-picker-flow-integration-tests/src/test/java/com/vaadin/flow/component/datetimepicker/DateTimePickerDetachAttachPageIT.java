@@ -46,6 +46,6 @@ public class DateTimePickerDetachAttachPageIT extends AbstractComponentIT {
     private void assertDateTimePickerIsValidOnTab() {
         WebElement dateTimePicker = findElement(By.id("date-time-picker"));
         dateTimePicker.sendKeys(Keys.TAB);
-        Assert.assertFalse("Time picker should be valid after Tab", Boolean.parseBoolean(dateTimePicker.getAttribute("invalid")));
+        Assert.assertFalse("Date time picker should be valid after Tab", Boolean.parseBoolean(dateTimePicker.getAttribute("invalid")));
     }
 }

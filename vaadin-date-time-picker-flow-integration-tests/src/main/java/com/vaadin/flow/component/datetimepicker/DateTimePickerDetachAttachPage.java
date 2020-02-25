@@ -26,7 +26,7 @@ import com.vaadin.flow.router.Route;
 public class DateTimePickerDetachAttachPage extends Div {
 
     /**
-     * Constructs a basic layout with a time picker.
+     * Constructs a basic layout with a date time picker.
      */
     public DateTimePickerDetachAttachPage() {
         DateTimePicker dateTimePicker = new DateTimePicker();

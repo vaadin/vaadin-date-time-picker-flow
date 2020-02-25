@@ -32,7 +32,7 @@ public class BinderValidationPage extends Div {
         Binder<AData> binder = new Binder<>(AData.class);
         DateTimePicker dateTimePicker = new DateTimePicker();
 
-        // Set time field validation constraint
+        // Set date time field validation constraint
         dateTimePicker.setMin(
                 LocalDateTime.of(2020, 6, 7, 1, 0));
 
