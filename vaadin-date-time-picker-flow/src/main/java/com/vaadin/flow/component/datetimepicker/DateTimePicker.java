@@ -107,20 +107,18 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
             updateValue();
         }
 
-        // workaround for https://github.com/vaadin/flow/issues/3496
-        setInvalid(false);
-
-        getElement().addEventListener("value-changed", e -> {
-            this.updateValue();
-            validate();
-        });
-
-        FieldValidationUtil.disableClientValidation(this);
-
         addToSlot(datePicker, "date-picker");
         addToSlot(timePicker, "time-picker");
 
         setLocale(UI.getCurrent().getLocale());
+
+        // workaround for https://github.com/vaadin/flow/issues/3496
+        setInvalid(false);
+
+        getElement().addEventListener("value-changed", e -> this.updateValue());
+        addValueChangeListener(e -> validate());
+
+        FieldValidationUtil.disableClientValidation(this);
     }
 
     /**
@@ -487,11 +485,8 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
      * Sets the current error message from the date time picker.
      */
     public void setErrorMessage(String errorMessage) {
-        if (errorMessage == null) {
-            getElement().setProperty("error-message", "");
-        } else {
-            getElement().setProperty("error-message", errorMessage);
-        }
+        getElement().setProperty("errorMessage",
+                errorMessage == null ? "" : errorMessage);
     }
 
     /**
