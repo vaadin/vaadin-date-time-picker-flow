@@ -608,6 +608,35 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
     }
 
     /**
+     * Sets whether the time picker is marked as input required.
+     *
+     * @param required
+     *        the value of the required to be set
+     */
+    public void setRequired(boolean required) {
+        getElement().setProperty("required", required);
+        this.required = required;
+    }
+
+    @Override
+    public void setRequiredIndicatorVisible(boolean requiredIndicatorVisible) {
+        super.setRequiredIndicatorVisible(requiredIndicatorVisible);
+        this.required = requiredIndicatorVisible;
+    }
+
+    /**
+     * Gets whether the time picker is marked as input required.
+     * <p>
+     * This property is not synchronized automatically from the client side, so
+     * the returned value may not be the same as in client side.
+     *
+     * @return {@code true} if the input is required, {@code false} otherwise
+     */
+    public boolean isRequired() {
+        return getElement().getProperty("required", false);
+    }
+
+    /**
      * Gets the validity of the date time picker value.
      *
      * @return the current validity of the value.

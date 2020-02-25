@@ -21,9 +21,7 @@ import com.vaadin.flow.dom.Element;
 import com.vaadin.flow.router.Route;
 
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Route("binder-validation")
 public class BinderValidationPage extends Div {
@@ -49,7 +47,7 @@ public class BinderValidationPage extends Div {
         });
 
         binder.forField(dateTimePicker).asRequired().withValidator(value -> value != null &&
-                value.compareTo(LocalDateTime.of(2020, 6, 7, 2, 0)) > -1, BINDER_ERROR_MSG)
+                value.isAfter(LocalDateTime.of(2020, 6, 7, 2, 0)), BINDER_ERROR_MSG)
                 .bind(AData::getDateTime, AData::setDateTime);
 
         add(dateTimePicker);
