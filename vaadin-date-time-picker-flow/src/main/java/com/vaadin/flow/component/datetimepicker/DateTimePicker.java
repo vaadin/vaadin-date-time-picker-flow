@@ -585,7 +585,7 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
      * @return the i18n object. It will be <code>null</code>, If the i18n
      *         properties weren't set.
      */
-    public DatePickerI18n getI18n() {
+    public DatePickerI18n getDatePickerI18n() {
         return i18n;
     }
 

@@ -98,7 +98,7 @@ public class DateTimePickerTest {
                     "pe", "la"));
 
         picker.setDatePickerI18n(i18n);
-        assertEquals(i18n, picker.getI18n());
+        assertEquals(i18n, picker.getDatePickerI18n());
     }
 
 }
