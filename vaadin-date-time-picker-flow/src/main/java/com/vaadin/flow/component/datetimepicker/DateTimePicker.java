@@ -63,7 +63,7 @@ class DateTimePickerTimePicker
  */
 @Tag("vaadin-date-time-picker")
 @HtmlImport("frontend://bower_components/vaadin-date-time-picker/src/vaadin-date-time-picker.html")
-@NpmPackage(value = "@vaadin/vaadin-date-time-picker", version = "1.0.0-alpha5")
+@NpmPackage(value = "@vaadin/vaadin-date-time-picker", version = "1.0.0-alpha6")
 @JsModule("@vaadin/vaadin-date-time-picker/src/vaadin-date-time-picker.js")
 public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
         implements HasStyle, HasSize, HasTheme, Focusable<DateTimePicker> {
@@ -528,7 +528,7 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
     }
 
     /**
-     * Sets the minimum date and time in the date time picker. Date and times before that will be
+     * Sets the minimum date and time in the date time picker. Dates and times before that will be
      * disabled in the popups.
      *
      * @param min
@@ -541,7 +541,7 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
     }
 
     /**
-     * Gets the minimum date and time in the date time picker. Date and times before that will be
+     * Gets the minimum date and time in the date time picker. Dates and times before that will be
      * disabled in the popups.
      *
      * @return the minimum date and time that is allowed to be set, or
@@ -549,28 +549,28 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
      */
     public LocalDateTime getMin() {
         return PARSER.apply(
-                getElement().getProperty("min")
+            getElement().getProperty("min")
         );
     }
 
     /**
-     * Sets the maximum date and time in the date time picker. Date and times above that will be
+     * Sets the maximum date and time in the date time picker. Dates and times above that will be
      * disabled in the popups.
      *
      * @param max
-     *            the maximum date that is allowed to be selected, or
+     *            the maximum date and time that is allowed to be set, or
      *            <code>null</code> to remove any minimum constraints
      */
     public void setMax(LocalDateTime max) {
-        getElement().getProperty("max", FORMATTER.apply(max));
+        getElement().setProperty("max", FORMATTER.apply(max));
         this.max = max;
     }
 
     /**
-     * Gets the maximum date and time in the date time picker. Date and times above that will be
+     * Gets the maximum date and time in the date time picker. Dates and times above that will be
      * disabled in the popups.
      *
-     * @return the maximum date that is allowed to be selected, or
+     * @return the maximum date and time that is allowed to be set, or
      *         <code>null</code> if there's no minimum
      */
     public LocalDateTime getMax() {
