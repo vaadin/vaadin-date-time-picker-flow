@@ -18,9 +18,9 @@ package com.vaadin.flow.component.datetimepicker;
 import com.vaadin.flow.component.datetimepicker.testbench.DateTimePickerElement;
 import com.vaadin.flow.testutil.AbstractValidationTest;
 import com.vaadin.flow.testutil.TestPath;
+import com.vaadin.testbench.TestBenchElement;
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.WebElement;
 
 import java.time.LocalDateTime;
 
@@ -57,7 +57,7 @@ public class DateTimePickerValidationPageIT extends AbstractValidationTest {
         element.setDateTime(invalidValue);
         assertValidStateOfPickerWithValidRange(!valid);
 
-        // Forcing max to invalid value on the client does not make the field valid
+        // Forcing min or max to invalid value on the client does not make the field valid
         element.setProperty(clientPropertyUnderTest, invalidValue.toString());
         getCommandExecutor().waitForVaadin();
         assertValidStateOfPickerWithValidRange(!valid);
@@ -74,7 +74,7 @@ public class DateTimePickerValidationPageIT extends AbstractValidationTest {
     }
 
     private void assertValidStateOfPickerWithValidRange(boolean valid) {
-        final WebElement checkIsInvalid = $("button").id("check-is-invalid");
+        final TestBenchElement checkIsInvalid = $("button").id("check-is-invalid");
         checkIsInvalid.click();
 
         final String expectedValue = !valid ? "invalid" : "valid";

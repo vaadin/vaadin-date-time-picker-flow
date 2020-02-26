@@ -15,13 +15,13 @@
  */
 package com.vaadin.flow.component.datetimepicker;
 
+import com.vaadin.flow.component.datetimepicker.testbench.DateTimePickerElement;
 import com.vaadin.flow.testutil.AbstractComponentIT;
 import com.vaadin.flow.testutil.TestPath;
+import com.vaadin.testbench.TestBenchElement;
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 
 /**
  * Integration tests for attaching / detaching date time picker.
@@ -36,7 +36,7 @@ public class DateTimePickerDetachAttachPageIT extends AbstractComponentIT {
         assertDateTimePickerIsValidOnTab();
 
         // Detaching and attaching date time picker
-        WebElement toggleAttach = findElement(By.id("toggle-attached"));
+        TestBenchElement toggleAttach = $("button").id("toggle-attached");
         toggleAttach.click();
         toggleAttach.click();
 
@@ -44,8 +44,9 @@ public class DateTimePickerDetachAttachPageIT extends AbstractComponentIT {
     }
 
     private void assertDateTimePickerIsValidOnTab() {
-        WebElement dateTimePicker = findElement(By.id("date-time-picker"));
+        DateTimePickerElement dateTimePicker = $(DateTimePickerElement.class).first();
         dateTimePicker.sendKeys(Keys.TAB);
-        Assert.assertFalse("Date time picker should be valid after Tab", Boolean.parseBoolean(dateTimePicker.getAttribute("invalid")));
+        Assert.assertFalse("Date time picker should be valid after Tab",
+                dateTimePicker.getPropertyBoolean("invalid"));
     }
 }

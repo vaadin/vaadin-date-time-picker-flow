@@ -482,7 +482,7 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
     }
 
     /**
-     * Sets the current error message from the date time picker.
+     * Sets the error message to display when the input is invalid.
      */
     public void setErrorMessage(String errorMessage) {
         getElement().setProperty("errorMessage",
@@ -490,7 +490,7 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
     }
 
     /**
-     * Gets the current error message from the date time picker.
+     * Gets the error message to display when the input is invalid.
      *
      * @return the current error message
      */
@@ -512,6 +512,18 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
      */
     public boolean isInvalid() {
         return getElement().getProperty("invalid", false);
+    }
+
+    /**
+     * Gets the validity of the date time picker value.
+     *
+     * @return the current validity of the value.
+     */
+    private boolean isInvalid(LocalDateTime value) {
+        final boolean isRequiredButEmpty = required && Objects.equals(getEmptyValue(), value);
+        final boolean isGreaterThanMax  = value != null && max != null && value.isAfter(max);
+        final boolean isSmallerThanMin = value != null && min != null && value.isBefore(min);
+        return isRequiredButEmpty || isGreaterThanMax || isSmallerThanMin;
     }
 
     /**
@@ -605,41 +617,12 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
     /**
      * Sets whether the date time picker is marked as input required.
      *
-     * @param required
-     *        the value of the required to be set
+     * @param requiredIndicatorVisible
+     *        the value of the requiredIndicatorVisible to be set
      */
-    public void setRequired(boolean required) {
-        getElement().setProperty("required", required);
-        this.required = required;
-    }
-
     @Override
     public void setRequiredIndicatorVisible(boolean requiredIndicatorVisible) {
         super.setRequiredIndicatorVisible(requiredIndicatorVisible);
         this.required = requiredIndicatorVisible;
-    }
-
-    /**
-     * Gets whether the date time picker is marked as input required.
-     * <p>
-     * This property is not synchronized automatically from the client side, so
-     * the returned value may not be the same as in client side.
-     *
-     * @return {@code true} if the input is required, {@code false} otherwise
-     */
-    public boolean isRequired() {
-        return getElement().getProperty("required", false);
-    }
-
-    /**
-     * Gets the validity of the date time picker value.
-     *
-     * @return the current validity of the value.
-     */
-    private boolean isInvalid(LocalDateTime value) {
-        final boolean isRequiredButEmpty = required && Objects.equals(getEmptyValue(), value);
-        final boolean isGreaterThanMax  = value != null && max != null && value.isAfter(max);
-        final boolean isSmallerThenMin = value != null && min != null && value.isBefore(min);
-        return isRequiredButEmpty || isGreaterThanMax || isSmallerThenMin;
     }
 }
