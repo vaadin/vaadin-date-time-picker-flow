@@ -46,7 +46,7 @@ final class FieldValidationUtil {
         javaScriptResult.then(result -> {
             if (component instanceof HasValidation
                     && ((HasValidation) component).isInvalid()) {
-                /**
+                /*
                  * By default, the invalid flag is always false when a component
                  * is created. However, if the component is populated and
                  * validated in the same HTTP request, the server side state may
