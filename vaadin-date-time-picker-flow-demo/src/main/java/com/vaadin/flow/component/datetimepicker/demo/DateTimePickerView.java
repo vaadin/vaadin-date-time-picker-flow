@@ -138,42 +138,6 @@ public class DateTimePickerView extends DemoView {
         addCard("Min and max", dateTimePicker);
     }
 
-    private void customValidator() {
-        // begin-source-example
-        // source-example-heading: Custom validator
-        DateTimePicker dateTimePicker = new DateTimePicker();
-        Binder<Appointment> binder = new Binder<>();
-        dateTimePicker.setLabel("Select an appointment date and time");
-        binder.forField(dateTimePicker).withValidator(
-                value -> !DayOfWeek.SATURDAY.equals(value.getDayOfWeek())
-                        && !DayOfWeek.SUNDAY.equals(value.getDayOfWeek())
-                        && value.getHour() >= 8 && value.getHour() <= 16,
-                "The selected date must be between Monday to Friday 8AM to 4PM")
-                .bind(Appointment::getDateTime, Appointment::setDateTime);
-        // end-source-example
-
-        addCard("Validation", "Custom validator", dateTimePicker);
-    }
-
-    private void configurationForRequired() {
-        // begin-source-example
-        // source-example-heading: Required
-        DateTimePicker dateTimePicker = new DateTimePicker();
-        Binder<Appointment> binder = new Binder<>();
-        dateTimePicker.setLabel("Appointment time");
-        binder.forField(dateTimePicker)
-                .asRequired("Please choose a date and time")
-                .bind(Appointment::getDateTime, Appointment::setDateTime);
-
-        Button button = new Button("Submit", event -> binder.validate());
-        // end-source-example
-
-        VerticalLayout verticalLayout = new VerticalLayout();
-        verticalLayout.setPadding(false);
-        verticalLayout.add(dateTimePicker, button);
-        addCard("Validation", "Required", verticalLayout);
-    }
-
     private void valueChangeEvent() {
         // begin-source-example
         // source-example-heading: Value change event
@@ -198,6 +162,42 @@ public class DateTimePickerView extends DemoView {
                 value);
         verticalLayout.setPadding(false);
         addCard("Value change event", verticalLayout);
+    }
+
+    private void configurationForRequired() {
+        // begin-source-example
+        // source-example-heading: Required
+        DateTimePicker dateTimePicker = new DateTimePicker();
+        Binder<Appointment> binder = new Binder<>();
+        dateTimePicker.setLabel("Appointment time");
+        binder.forField(dateTimePicker)
+                .asRequired("Please choose a date and time")
+                .bind(Appointment::getDateTime, Appointment::setDateTime);
+
+        Button button = new Button("Submit", event -> binder.validate());
+        // end-source-example
+
+        VerticalLayout verticalLayout = new VerticalLayout();
+        verticalLayout.setPadding(false);
+        verticalLayout.add(dateTimePicker, button);
+        addCard("Validation", "Required", verticalLayout);
+    }
+
+    private void customValidator() {
+        // begin-source-example
+        // source-example-heading: Custom validator
+        DateTimePicker dateTimePicker = new DateTimePicker();
+        Binder<Appointment> binder = new Binder<>();
+        dateTimePicker.setLabel("Select an appointment date and time");
+        binder.forField(dateTimePicker).withValidator(
+                value -> !DayOfWeek.SATURDAY.equals(value.getDayOfWeek())
+                        && !DayOfWeek.SUNDAY.equals(value.getDayOfWeek())
+                        && value.getHour() >= 8 && value.getHour() <= 16,
+                "The selected date must be between Monday to Friday 8AM to 4PM")
+                .bind(Appointment::getDateTime, Appointment::setDateTime);
+        // end-source-example
+
+        addCard("Validation", "Custom validator", dateTimePicker);
     }
 
     private void datePickerInitialPosition() {

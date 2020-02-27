@@ -33,7 +33,8 @@ public class DateTimePickerValidationPageIT extends AbstractValidationTest {
     @Test
     public void assertInvalidAfterClientChangeMax() {
         // max is 2020-06-07T03:00
-        final LocalDateTime invalidDateTime = LocalDateTime.of(2020, 6, 8, 3, 0);
+        final LocalDateTime invalidDateTime = LocalDateTime.of(2020, 6, 8, 3,
+                0);
         final LocalDateTime validDateTime = LocalDateTime.of(2020, 6, 7, 2, 0);
         assertInvalidAfterClientChange("max", invalidDateTime, validDateTime);
     }
@@ -41,7 +42,8 @@ public class DateTimePickerValidationPageIT extends AbstractValidationTest {
     @Test
     public void assertInvalidAfterClientChangeMin() {
         // min is 2020-06-07T01:00
-        final LocalDateTime invalidDateTime = LocalDateTime.of(2020, 6, 7, 0, 30);
+        final LocalDateTime invalidDateTime = LocalDateTime.of(2020, 6, 7, 0,
+                30);
         final LocalDateTime validDateTime = LocalDateTime.of(2020, 6, 7, 1, 0);
         assertInvalidAfterClientChange("min", invalidDateTime, validDateTime);
     }

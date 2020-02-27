@@ -20,8 +20,8 @@ import com.vaadin.flow.component.HasValidation;
 import com.vaadin.flow.component.page.PendingJavaScriptResult;
 
 /**
- * Utility class for date time picker component to disable client
- * side validation.
+ * Utility class for date time picker component to disable client side
+ * validation.
  *
  * @author Vaadin Ltd
  */
@@ -39,20 +39,26 @@ final class FieldValidationUtil {
     }
 
     private static void overrideClientValidation(Component component) {
-        PendingJavaScriptResult javaScriptResult =
-                component.getElement()
-                        .executeJs("this.validate = function () {return this.checkValidity();}");
+        PendingJavaScriptResult javaScriptResult = component.getElement()
+                .executeJs(
+                        "this.validate = function () {return this.checkValidity();}");
 
         javaScriptResult.then(result -> {
-            if (component instanceof HasValidation && ((HasValidation) component).isInvalid()) {
-                // By default, the invalid flag is always false when a component is created.
-                // However, if the component is populated and validated in the same HTTP request,
-                // the server side state may have changed before the JavaScript disabling client
-                // side validation was properly executed. This can sometimes lead to a situation
-                // where the client side thinks the value is valid (before client side validation
-                // was disabled) and the server side thinks the value is invalid. This will lead to
-                // strange behavior until the two states are synchronized again. To avoid this, we will
-                // explicitly change the client side value if the server side is invalid.
+            if (component instanceof HasValidation
+                    && ((HasValidation) component).isInvalid()) {
+                /**
+                 * By default, the invalid flag is always false when a component
+                 * is created. However, if the component is populated and
+                 * validated in the same HTTP request, the server side state may
+                 * have changed before the JavaScript disabling client side
+                 * validation was properly executed. This can sometimes lead to
+                 * a situation where the client side thinks the value is valid
+                 * (before client side validation was disabled) and the server
+                 * side thinks the value is invalid. This will lead to strange
+                 * behavior until the two states are synchronized again. To
+                 * avoid this, we will explicitly change the client side value
+                 * if the server side is invalid.
+                 */
                 component.getElement().executeJs("this.invalid = true");
             }
         });
