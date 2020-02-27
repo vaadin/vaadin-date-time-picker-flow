@@ -52,9 +52,9 @@ public class DateTimePickerView extends DemoView {
         disabledAndReadonly();
         timePickerStep();
         createMinAndMaxDateTimePicker();
-        customValidator();
-        configurationForRequired();
         valueChangeEvent();
+        configurationForRequired(); // Validation
+        customValidator();
         datePickerInitialPosition(); // Presentation
         datePickerWithWeekNumbers();
         finnishDateTimePicker(); // Localization
