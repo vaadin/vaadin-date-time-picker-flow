@@ -34,7 +34,7 @@ public class DateTimePickerValidationPageIT extends AbstractValidationTest {
     public void assertInvalidAfterClientChangeMax() {
         // max is 2020-06-07T03:00
         final LocalDateTime invalidDateTime = LocalDateTime.of(2020, 6, 8, 3, 0);
-        final LocalDateTime validDateTime = LocalDateTime.of(2020, 6, 7, 2, 0);;
+        final LocalDateTime validDateTime = LocalDateTime.of(2020, 6, 7, 2, 0);
         assertInvalidAfterClientChange("max", invalidDateTime, validDateTime);
     }
 
@@ -47,17 +47,18 @@ public class DateTimePickerValidationPageIT extends AbstractValidationTest {
     }
 
     private void assertInvalidAfterClientChange(String clientPropertyUnderTest,
-        LocalDateTime invalidValue, LocalDateTime validValue) {
+            LocalDateTime invalidValue, LocalDateTime validValue) {
 
         final boolean valid = true;
         final DateTimePickerElement element = $(DateTimePickerElement.class)
-            .id("picker-with-valid-range");
+                .id("picker-with-valid-range");
         assertValidStateOfPickerWithValidRange(valid);
 
         element.setDateTime(invalidValue);
         assertValidStateOfPickerWithValidRange(!valid);
 
-        // Forcing min or max to invalid value on the client does not make the field valid
+        // Forcing min or max to invalid value on the client does not make the
+        // field valid
         element.setProperty(clientPropertyUnderTest, invalidValue.toString());
         getCommandExecutor().waitForVaadin();
         assertValidStateOfPickerWithValidRange(!valid);
@@ -74,7 +75,8 @@ public class DateTimePickerValidationPageIT extends AbstractValidationTest {
     }
 
     private void assertValidStateOfPickerWithValidRange(boolean valid) {
-        final TestBenchElement checkIsInvalid = $("button").id("check-is-invalid");
+        final TestBenchElement checkIsInvalid = $("button")
+                .id("check-is-invalid");
         checkIsInvalid.click();
 
         final String expectedValue = !valid ? "invalid" : "valid";

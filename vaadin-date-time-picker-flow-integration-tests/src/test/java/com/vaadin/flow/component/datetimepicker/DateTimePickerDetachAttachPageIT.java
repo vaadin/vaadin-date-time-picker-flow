@@ -44,7 +44,8 @@ public class DateTimePickerDetachAttachPageIT extends AbstractComponentIT {
     }
 
     private void assertDateTimePickerIsValidOnTab() {
-        DateTimePickerElement dateTimePicker = $(DateTimePickerElement.class).first();
+        DateTimePickerElement dateTimePicker = $(DateTimePickerElement.class)
+                .first();
         dateTimePicker.sendKeys(Keys.TAB);
         Assert.assertFalse("Date time picker should be valid after Tab",
                 dateTimePicker.getPropertyBoolean("invalid"));

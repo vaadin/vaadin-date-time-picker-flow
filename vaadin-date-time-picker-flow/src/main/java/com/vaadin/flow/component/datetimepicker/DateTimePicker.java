@@ -67,7 +67,8 @@ class DateTimePickerTimePicker
 @NpmPackage(value = "@vaadin/vaadin-date-time-picker", version = "1.0.0-alpha6")
 @JsModule("@vaadin/vaadin-date-time-picker/src/vaadin-date-time-picker.js")
 public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
-        implements HasStyle, HasSize, HasTheme, HasValidation, Focusable<DateTimePicker> {
+        implements HasStyle, HasSize, HasTheme, HasValidation,
+        Focusable<DateTimePicker> {
 
     private final DateTimePickerDatePicker datePicker = new DateTimePickerDatePicker();
     private final DateTimePickerTimePicker timePicker = new DateTimePickerTimePicker();
@@ -520,9 +521,12 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
      * @return the current validity of the value.
      */
     private boolean isInvalid(LocalDateTime value) {
-        final boolean isRequiredButEmpty = required && Objects.equals(getEmptyValue(), value);
-        final boolean isGreaterThanMax  = value != null && max != null && value.isAfter(max);
-        final boolean isSmallerThanMin = value != null && min != null && value.isBefore(min);
+        final boolean isRequiredButEmpty = required
+                && Objects.equals(getEmptyValue(), value);
+        final boolean isGreaterThanMax = value != null && max != null
+                && value.isAfter(max);
+        final boolean isSmallerThanMin = value != null && min != null
+                && value.isBefore(min);
         return isRequiredButEmpty || isGreaterThanMax || isSmallerThanMin;
     }
 
@@ -536,8 +540,8 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
     }
 
     /**
-     * Sets the minimum date and time in the date time picker. Dates and times before that will be
-     * disabled in the popups.
+     * Sets the minimum date and time in the date time picker. Dates and times
+     * before that will be disabled in the popups.
      *
      * @param min
      *            the minimum date and time that is allowed to be set, or
@@ -549,21 +553,19 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
     }
 
     /**
-     * Gets the minimum date and time in the date time picker. Dates and times before that will be
-     * disabled in the popups.
+     * Gets the minimum date and time in the date time picker. Dates and times
+     * before that will be disabled in the popups.
      *
      * @return the minimum date and time that is allowed to be set, or
      *         <code>null</code> if there's no minimum
      */
     public LocalDateTime getMin() {
-        return PARSER.apply(
-            getElement().getProperty("min")
-        );
+        return PARSER.apply(getElement().getProperty("min"));
     }
 
     /**
-     * Sets the maximum date and time in the date time picker. Dates and times above that will be
-     * disabled in the popups.
+     * Sets the maximum date and time in the date time picker. Dates and times
+     * above that will be disabled in the popups.
      *
      * @param max
      *            the maximum date and time that is allowed to be set, or
@@ -575,16 +577,14 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
     }
 
     /**
-     * Gets the maximum date and time in the date time picker. Dates and times above that will be
-     * disabled in the popups.
+     * Gets the maximum date and time in the date time picker. Dates and times
+     * above that will be disabled in the popups.
      *
      * @return the maximum date and time that is allowed to be set, or
      *         <code>null</code> if there's no minimum
      */
     public LocalDateTime getMax() {
-        return PARSER.apply(
-            getElement().getProperty("max")
-        );
+        return PARSER.apply(getElement().getProperty("max"));
     }
 
     /**
@@ -602,7 +602,8 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
     }
 
     /**
-     * Sets the internationalization properties for the date picker inside this component.
+     * Sets the internationalization properties for the date picker inside this
+     * component.
      *
      * @param i18n
      *            the internationalized properties, not <code>null</code>
@@ -618,7 +619,7 @@ public class DateTimePicker extends AbstractField<DateTimePicker, LocalDateTime>
      * Sets whether the date time picker is marked as input required.
      *
      * @param requiredIndicatorVisible
-     *        the value of the requiredIndicatorVisible to be set
+     *            the value of the requiredIndicatorVisible to be set
      */
     @Override
     public void setRequiredIndicatorVisible(boolean requiredIndicatorVisible) {

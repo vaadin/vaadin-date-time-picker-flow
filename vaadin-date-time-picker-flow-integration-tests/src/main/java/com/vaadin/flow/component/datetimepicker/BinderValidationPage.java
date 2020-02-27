@@ -33,22 +33,22 @@ public class BinderValidationPage extends Div {
         DateTimePicker dateTimePicker = new DateTimePicker();
 
         // Set date time field validation constraint
-        dateTimePicker.setMin(
-                LocalDateTime.of(2020, 6, 7, 1, 0));
+        dateTimePicker.setMin(LocalDateTime.of(2020, 6, 7, 1, 0));
 
         // Set invalid indicator label
         String invalidString = "invalid";
         Element dateTimeFieldElement = dateTimePicker.getElement();
         dateTimeFieldElement.addPropertyChangeListener(invalidString, event -> {
-            String label = dateTimeFieldElement.getProperty(invalidString, false)
-                    ? invalidString
-                    : "valid";
-            dateTimeFieldElement.setProperty("label", label == null ? "" : label);
+            String label = dateTimeFieldElement.getProperty(invalidString,
+                    false) ? invalidString : "valid";
+            dateTimeFieldElement.setProperty("label",
+                    label == null ? "" : label);
         });
 
-        binder.forField(dateTimePicker).asRequired().withValidator(value -> value != null &&
-                value.isAfter(LocalDateTime.of(2020, 6, 7, 2, 0)), BINDER_ERROR_MSG)
-                .bind(AData::getDateTime, AData::setDateTime);
+        binder.forField(dateTimePicker).asRequired().withValidator(
+                value -> value != null
+                        && value.isAfter(LocalDateTime.of(2020, 6, 7, 2, 0)),
+                BINDER_ERROR_MSG).bind(AData::getDateTime, AData::setDateTime);
 
         add(dateTimePicker);
     }

@@ -40,10 +40,8 @@ public class DateTimePickerValidationPage extends ValidationTestView {
 
     private void createPickerWithMaxAndMinValues() {
         final DateTimePicker dateTimePicker = new DateTimePicker();
-        dateTimePicker.setMin(
-                LocalDateTime.of(2020, 6, 7, 1, 0));
-        dateTimePicker.setMax(
-                LocalDateTime.of(2020, 6, 7, 3, 0));
+        dateTimePicker.setMin(LocalDateTime.of(2020, 6, 7, 1, 0));
+        dateTimePicker.setMax(LocalDateTime.of(2020, 6, 7, 3, 0));
         dateTimePicker.setId("picker-with-valid-range");
 
         final Div isValid = new Div();

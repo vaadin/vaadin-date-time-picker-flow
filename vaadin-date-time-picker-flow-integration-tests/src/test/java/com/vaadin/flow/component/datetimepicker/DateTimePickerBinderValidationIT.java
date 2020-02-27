@@ -36,7 +36,8 @@ public class DateTimePickerBinderValidationIT extends AbstractComponentIT {
         open();
     }
 
-    private void setInternalValidBinderInvalidValue(DateTimePickerElement field) {
+    private void setInternalValidBinderInvalidValue(
+            DateTimePickerElement field) {
         field.setDateTime(LocalDateTime.of(2020, 6, 7, 1, 30));
         field.dispatchEvent("change",
                 Collections.singletonMap("bubbles", true));
@@ -73,8 +74,8 @@ public class DateTimePickerBinderValidationIT extends AbstractComponentIT {
 
         setInternalValidBinderInvalidValue(field);
 
-        field.getCommandExecutor()
-                .executeScript("arguments[0].invalid = false", field);
+        field.getCommandExecutor().executeScript("arguments[0].invalid = false",
+                field);
 
         Assert.assertEquals(field.getPropertyString("label"), "invalid");
     }

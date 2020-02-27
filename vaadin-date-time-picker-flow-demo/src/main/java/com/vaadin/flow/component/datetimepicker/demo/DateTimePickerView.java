@@ -161,12 +161,11 @@ public class DateTimePickerView extends DemoView {
         DateTimePicker dateTimePicker = new DateTimePicker();
         Binder<Appointment> binder = new Binder<>();
         dateTimePicker.setLabel("Appointment time");
-        binder.forField(dateTimePicker).asRequired("Please choose a date and time")
+        binder.forField(dateTimePicker)
+                .asRequired("Please choose a date and time")
                 .bind(Appointment::getDateTime, Appointment::setDateTime);
 
-        Button button = new Button("Submit", event ->
-                binder.validate()
-        );
+        Button button = new Button("Submit", event -> binder.validate());
         // end-source-example
 
         VerticalLayout verticalLayout = new VerticalLayout();
