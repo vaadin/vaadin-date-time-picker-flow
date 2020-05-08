@@ -121,7 +121,7 @@ public class DateTimePickerView extends DemoView {
         dateTimePicker.setLabel("Label");
         dateTimePicker.setStep(Duration.ofMinutes(30));
 
-        add(note, dateTimePicker);
+        add(dateTimePicker);
         // end-source-example
 
         div.add(note, dateTimePicker);
@@ -162,7 +162,7 @@ public class DateTimePickerView extends DemoView {
             }
         });
 
-        add(note, dateTimePicker, value);
+        add(dateTimePicker, value);
         // end-source-example
 
         Paragraph note = new Paragraph(
@@ -235,7 +235,7 @@ public class DateTimePickerView extends DemoView {
                 .setWeekdaysShort(Arrays.asList("Sun", "Mon", "Tue", "Wed",
                         "Thu", "Fri", "Sat")));
 
-        add(note, dateTimePicker);
+        add(dateTimePicker);
         // end-source-example
 
         div.add(note, dateTimePicker);
@@ -243,7 +243,6 @@ public class DateTimePickerView extends DemoView {
     }
 
     private void finnishDateTimePicker() {
-        Div message = new Div();
         // begin-source-example
         // source-example-heading: Localizing
         DateTimePicker dateTimePicker = new DateTimePicker();
@@ -262,6 +261,8 @@ public class DateTimePickerView extends DemoView {
                         "keskiviikko", "torstai", "perjantai", "lauantai"))
                 .setWeekdaysShort(Arrays.asList("su", "ma", "ti", "ke", "to",
                         "pe", "la")));
+
+        Div message = new Div();
 
         dateTimePicker.addValueChangeListener(event -> {
             LocalDateTime selectedDateTime = event.getValue();
