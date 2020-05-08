@@ -76,6 +76,9 @@ public class DateTimePickerView extends DemoView {
         DateTimePicker valueDateTimePicker = new DateTimePicker();
         LocalDateTime now = LocalDateTime.now();
         valueDateTimePicker.setValue(now);
+
+        add(labelDateTimePicker, placeholderDateTimePicker,
+                valueDateTimePicker);
         // end-source-example
 
         layout.add(labelDateTimePicker, placeholderDateTimePicker,
@@ -96,6 +99,8 @@ public class DateTimePickerView extends DemoView {
         readonlyDateTimePicker.setLabel("Read-only");
         readonlyDateTimePicker.setValue(LocalDateTime.now());
         readonlyDateTimePicker.setReadOnly(true);
+
+        add(disabledDateTimePicker, readonlyDateTimePicker);
         // end-source-example
 
         disabledDateTimePicker.getStyle().set("margin-right", "1rem")
@@ -115,6 +120,8 @@ public class DateTimePickerView extends DemoView {
         DateTimePicker dateTimePicker = new DateTimePicker();
         dateTimePicker.setLabel("Label");
         dateTimePicker.setStep(Duration.ofMinutes(30));
+
+        add(dateTimePicker);
         // end-source-example
 
         div.add(note, dateTimePicker);
@@ -132,6 +139,8 @@ public class DateTimePickerView extends DemoView {
 
         dateTimePicker.setMin(min);
         dateTimePicker.setMax(max);
+
+        add(dateTimePicker);
         // end-source-example
 
         addCard("Min and max", dateTimePicker);
@@ -152,6 +161,8 @@ public class DateTimePickerView extends DemoView {
                 value.setText("Selected date time: " + event.getValue());
             }
         });
+
+        add(dateTimePicker, value);
         // end-source-example
 
         Paragraph note = new Paragraph(
@@ -174,6 +185,7 @@ public class DateTimePickerView extends DemoView {
                 .bind(Appointment::getDateTime, Appointment::setDateTime);
 
         Button button = new Button("Submit", event -> binder.validate());
+        add(dateTimePicker, button);
         // end-source-example
 
         VerticalLayout verticalLayout = new VerticalLayout();
@@ -194,6 +206,8 @@ public class DateTimePickerView extends DemoView {
                         && value.getHour() >= 8 && value.getHour() <= 16,
                 "The selected date must be between Monday to Friday 8AM to 4PM")
                 .bind(Appointment::getDateTime, Appointment::setDateTime);
+
+        add(dateTimePicker);
         // end-source-example
 
         addCard("Validation", "Custom validator", dateTimePicker);
@@ -220,6 +234,8 @@ public class DateTimePickerView extends DemoView {
                         "Wednesday", "Thursday", "Friday", "Saturday"))
                 .setWeekdaysShort(Arrays.asList("Sun", "Mon", "Tue", "Wed",
                         "Thu", "Fri", "Sat")));
+
+        add(dateTimePicker);
         // end-source-example
 
         div.add(note, dateTimePicker);
@@ -227,7 +243,6 @@ public class DateTimePickerView extends DemoView {
     }
 
     private void finnishDateTimePicker() {
-        Div message = new Div();
         // begin-source-example
         // source-example-heading: Localizing
         DateTimePicker dateTimePicker = new DateTimePicker();
@@ -247,6 +262,8 @@ public class DateTimePickerView extends DemoView {
                 .setWeekdaysShort(Arrays.asList("su", "ma", "ti", "ke", "to",
                         "pe", "la")));
 
+        Div message = new Div();
+
         dateTimePicker.addValueChangeListener(event -> {
             LocalDateTime selectedDateTime = event.getValue();
             if (selectedDateTime != null) {
@@ -261,6 +278,8 @@ public class DateTimePickerView extends DemoView {
                 message.setText("No date is selected");
             }
         });
+
+        add(dateTimePicker, message);
         // end-source-example
 
         addCard("Localization", "Localizing", dateTimePicker, message);
@@ -281,6 +300,8 @@ public class DateTimePickerView extends DemoView {
         DateTimePicker rightDateTimePicker = new DateTimePicker();
         rightDateTimePicker.setValue(LocalDateTime.now());
         rightDateTimePicker.addThemeName("align-right");
+
+        add(leftDateTimePicker, centerDateTimePicker, rightDateTimePicker);
         // end-source-example
 
         verticalLayout.add(leftDateTimePicker, centerDateTimePicker,
@@ -294,6 +315,8 @@ public class DateTimePickerView extends DemoView {
         // source-example-heading: Small text field
         DateTimePicker dateTimePicker = new DateTimePicker();
         dateTimePicker.addThemeName("small");
+
+        add(dateTimePicker);
         // end-source-example
 
         addCard("Theme Variants", "Small text field", dateTimePicker);
@@ -317,6 +340,8 @@ public class DateTimePickerView extends DemoView {
                 firstAnchor);
         HorizontalLayout secondHorizontalLayout = new HorizontalLayout(
                 secondDiv, secondAnchor);
+
+        add(firstHorizontalLayout, secondHorizontalLayout);
         // begin-source-example
         // source-example-heading: Styling references
 
