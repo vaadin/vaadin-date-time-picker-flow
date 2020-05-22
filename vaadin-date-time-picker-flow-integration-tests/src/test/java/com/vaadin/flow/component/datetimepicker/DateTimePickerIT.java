@@ -45,6 +45,7 @@ public class DateTimePickerIT extends AbstractComponentIT {
     @Before
     public void init() {
         open();
+        this.driver.manage().logs().get("browser").getAll().stream().forEach(System.out::println);
         waitForElementPresent(By.tagName("vaadin-date-time-picker"));
         picker = $(DateTimePickerElement.class).first();
         message = $("div").id("message");
@@ -156,4 +157,5 @@ public class DateTimePickerIT extends AbstractComponentIT {
         Assert.assertEquals("1/2/2018", picker.getDatePresentation());
         Assert.assertEquals("3:30 PM", picker.getTimePresentation());
     }
+
 }
